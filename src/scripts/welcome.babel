@@ -1,0 +1,38 @@
+const names=[
+    {name : "Edgar"},
+    {name : "Sara"},
+    {name : "Pedro"},
+];
+
+
+class Welcome extends React.Component {
+
+    renderHello( name ){
+        return <h1 key={name}>Hello, {name}</h1>;
+    }
+    render() {
+        let arrayHello = []
+        for( let greeting of this.props.name ){
+            arrayHello.push( this.renderHello( greeting.name) )
+        }
+        return (
+            <div>{arrayHello}</div>)
+    }
+}
+
+class AppWelcome extends React.Component {
+    render() {
+        return (
+            <div>
+                <Welcome name={names} />
+            </div>
+        );
+    }
+}
+
+setTimeout( function(){
+    ReactDOM.render(
+      <AppWelcome />,
+      document.getElementById('welcome')
+    );
+},3000)

@@ -32,7 +32,7 @@ config.foldersPath = {
 		build: `${build}/styles`
     },
     babel: {
-        src: `${source}/scripts/**/*.js`,
+        src: `${source}/scripts/**/*.babel`,
 		build: `${build}/scripts`
     }
 };
