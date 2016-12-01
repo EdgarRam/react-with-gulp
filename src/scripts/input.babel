@@ -1,0 +1,50 @@
+class CustomTextInput extends React.Component {
+    constructor() {
+        super();
+    }
+
+    handlefocus() {
+        // Explicitly focus the text input using the raw DOM API
+        this.textInput.focus();
+    }
+
+    handleSubmit(event) {
+        alert('A name was submitted: ' + this.input.value);
+        event.preventDefault();
+    }
+
+    // Use the `ref` callback to store a reference to the text input DOM
+    // element in this.textInput.
+    render() {
+        return (
+            <div>
+                <input
+                    type="text"
+                    ref={(input) => { this.textInput = input; }}
+                />
+                <input
+                    type="button"
+                    value="Focus the text input"
+                    onClick={() => this.handlefocus()}
+                />
+                <form onSubmit={(e) => this.handleSubmit(e)}>
+                    <label>
+                        Name:
+                        <input
+                            defaultValue="Bob"
+                            type="text"
+                            ref={(input) => this.input = input}
+                        />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+        );
+    }
+}
+
+
+ReactDOM.render(
+    <CustomTextInput />,
+    document.getElementById('inputText')
+);
